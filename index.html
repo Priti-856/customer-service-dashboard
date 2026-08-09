@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <h1>Customer Service Dashboard</h1>
+            <p>Manage and track support tickets</p>
+        </div>
+        <button id="addTicketBtn" class="primary-btn">+ New Ticket</button>
+    </header>
+
+    <main class="container">
+        <section class="stats-grid">
+            <div class="stat-card">
+                <span>Total Tickets</span>
+                <strong id="totalCount">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>Open</span>
+                <strong id="openCount">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>In Progress</span>
+                <strong id="progressCount">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>Resolved</span>
+                <strong id="resolvedCount">0</strong>
+            </div>
+        </section>
+
+        <section class="toolbar">
+            <input id="searchInput" type="text" placeholder="Search by customer, issue or ticket ID">
+
+            <select id="statusFilter">
+                <option value="all">All Statuses</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+
+            <select id="priorityFilter">
+                <option value="all">All Priorities</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+
+            <select id="sortSelect">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="priority">High Priority First</option>
+            </select>
+        </section>
+
+        <section class="table-card">
+            <div class="table-header">
+                <h2>Support Tickets</h2>
+                <button id="clearBtn" class="secondary-btn">Clear All</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Issue</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticketTableBody"></tbody>
+                </table>
+            </div>
+
+            <p id="emptyState" class="empty-state">No tickets found.</p>
+        </section>
+    </main>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Ticket</h2>
+                <button id="closeModal" class="close-btn">&times;</button>
+            </div>
+
+            <form id="ticketForm">
+                <label>
+                    Customer Name
+                    <input id="customerInput" type="text" required>
+                </label>
+
+                <label>
+                    Issue
+                    <textarea id="issueInput" rows="4" required></textarea>
+                </label>
+
+                <label>
+                    Priority
+                    <select id="priorityInput" required>
+                        <option value="High">High</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </label>
+
+                <button class="primary-btn" type="submit">Create Ticket</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
