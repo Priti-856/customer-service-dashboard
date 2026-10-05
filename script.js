@@ -1,5 +1,5 @@
 const STORAGE_KEY = "customerServiceTickets";
-
+// sample Tickets generated for reference
 const defaultTickets = [
     {
         id: 1001,
@@ -26,6 +26,8 @@ const defaultTickets = [
 
 let tickets = loadTickets();
 
+
+// Filter generated
 const elements = {
     totalCount: document.getElementById("totalCount"),
     openCount: document.getElementById("openCount"),
@@ -47,6 +49,7 @@ const elements = {
     clearBtn: document.getElementById("clearBtn")
 };
 
+//ticket generating function
 function loadTickets() {
     const stored = localStorage.getItem(STORAGE_KEY);
 
@@ -57,10 +60,11 @@ function loadTickets() {
             console.error("Could not load saved tickets:", error);
         }
     }
-
+//saved to local storage
     localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultTickets));
     return [...defaultTickets];
 }
+
 
 function saveTickets() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
@@ -81,6 +85,7 @@ function renderStats() {
         tickets.filter(ticket => ticket.status === "Resolved").length;
 }
 
+//filtering
 function getFilteredTickets() {
     const search = elements.searchInput.value.trim().toLowerCase();
     const status = elements.statusFilter.value;
@@ -188,6 +193,7 @@ function changeStatus(id) {
     renderAll();
 }
 
+//deleting tickets
 function deleteTicket(id) {
     const shouldDelete = confirm("Delete this ticket?");
 
